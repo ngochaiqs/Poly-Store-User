@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Utils {
     //public static final String BASE_URL = "https://luongngochai.000webhostapp.com/";
-    public static final String BASE_URL = "http://172.16.4.139/polystore/";
+    public static final String BASE_URL = "http://192.168.1.2/polystore/";
     public static NguoiDung nguoidung_current = new NguoiDung();
     public static List<GioHang> manggiohang;
     public static List<GioHang> mangmuahang = new ArrayList<>();

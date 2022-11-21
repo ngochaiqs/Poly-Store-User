@@ -78,6 +78,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98083385938:android:56fe1f2f4e25ddf784a58b",
+        "android_client_info": {
+          "package_name": "com.poly_store_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98083385938-iecv38dkdlpjnf37fsabjv0oo25m8sj1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.poly_store_user",
+            "certificate_hash": "9fde15c5baae84fcda9ec54beb48003b29597bbf"
+          }
+        },
+        {
+          "client_id": "98083385938-d6qbd0lh7upc7jotnbhadcjet22pq671.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuV-EXgPXSvHQFUXBiKFHyAom5uDJYY80"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98083385938-d6qbd0lh7upc7jotnbhadcjet22pq671.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
