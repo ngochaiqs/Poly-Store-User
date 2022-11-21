@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.poly_store"
+        applicationId "com.poly_store_user"
         minSdk 26
         targetSdk 32
         versionCode 1
@@ -30,7 +30,7 @@ android {
         viewBinding true
         dataBinding true
     }
-    namespace 'com.poly_store'
+    namespace 'com.poly_store_user'
 }
 
 dependencies {
