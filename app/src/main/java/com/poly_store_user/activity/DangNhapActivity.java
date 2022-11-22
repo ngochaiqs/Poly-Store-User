@@ -8,9 +8,12 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,16 +22,34 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.poly_store_user.R;
 import com.poly_store_user.retrofit.ApiBanHang;
 import com.poly_store_user.retrofit.RetrofitClient;
 import com.poly_store_user.utils.Utils;
+
+import java.util.Arrays;
 
 import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -47,6 +68,12 @@ public class DangNhapActivity extends AppCompatActivity {
     ProgressBar progressBar;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     private boolean isLogin;
+    CallbackManager mCallbackManager;
+    ImageView facebook_login, google_login;
+    private FirebaseAuth mAuth;
+    ImageView btnFB, btnGG;
+    GoogleSignInClient googleSignInClient;
+    GoogleSignInOptions googleSignInOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +82,20 @@ public class DangNhapActivity extends AppCompatActivity {
 
         initView();
         initControll();
+        
+
+
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //facebook
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
     private void initControll(){
         txtdangki.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +186,35 @@ public class DangNhapActivity extends AppCompatActivity {
                 }
             }
         });
+
+        facebook_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginManager.getInstance().logInWithReadPermissions(DangNhapActivity.this,
+                        Arrays.asList("email", "public_profile"));
+                LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+//                        handleFacebookAccessToken(loginResult.getAccessToken());
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancel() {
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                    }
+                });
+            }
+        });
+
     }
+
+
+
 
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -159,7 +227,8 @@ public class DangNhapActivity extends AppCompatActivity {
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
         txtdangki = findViewById(R.id.txtdangky);
         txtresetMK = findViewById(R.id.txtresetMK);
-
+        facebook_login = findViewById(R.id.facebook_login);
+        google_login = findViewById(R.id.google_login);
         email = findViewById(R.id.email);
         matKhau = findViewById(R.id.matKhau);
         btndangnhap = findViewById(R.id.btndangnhap);
@@ -167,6 +236,17 @@ public class DangNhapActivity extends AppCompatActivity {
         tenND = firebaseAuth.getCurrentUser();
         line_email = findViewById(R.id.line_email);
         line_matkhau = findViewById(R.id.line_matkhau);
+
+
+        //Initialise Facebook SDK
+        FacebookSdk.sdkInitialize(DangNhapActivity.this);
+
+        //Initialise Firebase
+        mAuth = FirebaseAuth.getInstance();
+
+
+        // Initialize Facebook Login button
+        mCallbackManager = CallbackManager.Factory.create();
 
 
         //read data
@@ -230,4 +310,6 @@ public class DangNhapActivity extends AppCompatActivity {
         compositeDisposable.clear();
         super.onDestroy();
     }
+
+
 }

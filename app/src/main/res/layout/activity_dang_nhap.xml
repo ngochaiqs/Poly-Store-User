@@ -192,6 +192,14 @@
             android:padding="6dp"
             android:src="@drawable/facebook_logo" />
 
+<!--        <com.facebook.login.widget.LoginButton-->
+<!--            android:id="@+id/login_button"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/fb_bg"-->
+<!--            android:padding="6dp"-->
+<!--            android:src="@drawable/facebook_logo" />-->
         <ImageView
             android:id="@+id/twitter_login"
             android:layout_width="0dp"
