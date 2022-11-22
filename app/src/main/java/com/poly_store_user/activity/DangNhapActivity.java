@@ -82,7 +82,9 @@ public class DangNhapActivity extends AppCompatActivity {
 
         initView();
         initControll();
-        
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
 
 
     }
@@ -90,11 +92,11 @@ public class DangNhapActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         //facebook
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
-
 
     private void initControll(){
         txtdangki.setOnClickListener(new View.OnClickListener() {
