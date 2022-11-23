@@ -12,8 +12,8 @@ public interface ApiPushNofication {
     //Completable sendNofitication(NotiSendData notiSendData);
     @Headers(
             {
-                    "content-type: application/json",
-                    "authorization: key=AAAAFtY5slI:APA91bFLYNncBWpmKEiX7StcriDzUTsns1EXCfpzgPD10i-2Yf_wMyVb12BspaOllqU2BAuMPqrTsCckt4kB3aqKuqV2Xn0YKJLzrZz8-A6AMQ1JBAd7rihWx8gYrsv2MYP1TGNyN0nF"
+                    "Content-Type: application/json",
+                    "Authorization: key= AAAAFtY5slI:APA91bGag3wf4DeUcY4sYsbiNoFBnyRmtWyc0I7IPAIrzhFNfUzWeqf7KAYGRwVtA-756gO7C3a-uwLG4iOnRce5jDV7UWe2hsMpWbLZ2qvS25kjCGlQCEZ7Y_crOE7eVcqFGDrAG5NU"
             }
     )
     @POST("fcm/send")

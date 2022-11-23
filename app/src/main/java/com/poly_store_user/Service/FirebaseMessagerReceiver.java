@@ -31,7 +31,7 @@ public class FirebaseMessagerReceiver extends FirebaseMessagingService {
         String channelId = "noti";
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 , intent, PendingIntent.FLAG_ONE_SHOT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channelId)
-                .setSmallIcon(R.drawable.gcm_icon)
+                .setSmallIcon(R.drawable.logo)
                 .setAutoCancel(true)
                 .setVibrate(new long[]{1000,1000,1000,1000})
                 .setOnlyAlertOnce(true)
@@ -50,7 +50,7 @@ public class FirebaseMessagerReceiver extends FirebaseMessagingService {
         RemoteViews remoteViews = new RemoteViews(getApplicationContext().getPackageName(), R.layout.notification);
         remoteViews.setTextViewText(R.id.title_noti, title);
         remoteViews.setTextViewText(R.id.body_noti, body);
-        remoteViews.setImageViewResource(R.id.imgnoti, R.drawable.gcm_icon);
+        remoteViews.setImageViewResource(R.id.imgnoti, R.drawable.ic_baseline_shopping_bag_24);
         return remoteViews;
     }
 }

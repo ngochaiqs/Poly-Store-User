@@ -189,9 +189,11 @@ public class ThanhToanActivity extends AppCompatActivity {
                         nguoiDungModel -> {
                             if (nguoiDungModel.isSuccess()) {
                                 for (int i = 0; i < nguoiDungModel.getResult().size(); i++) {
+                                    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                                     Map<String, String> data = new HashMap<>();
-                                    data.put("title", "Thông báo");
-                                    data.put("body", "Nhận được đơn hàng mới!");
+                                    data.put("title", "Thông báo đơn hàng mới");
+                                    data.put("body", "Nhận được đơn hàng mới từ " + Utils.nguoidung_current.getTenND() + " gồm " + totalItem + " sản phẩm" + " với tổng tiền " + decimalFormat.format(tongtien) + " đ." + " Vui lòng kiểm tra đơn hàng!");
+                                    Log.d("==///", "Token Admin: " + nguoiDungModel.getResult().get(i).getToken());
                                     NotiSendData notiSendData = new NotiSendData(nguoiDungModel.getResult().get(i).getToken(), data);
                                     ApiPushNofication apiPushNofication = RetrofitClientNoti.getInstance().create(ApiPushNofication.class);
                                     compositeDisposable.add(apiPushNofication.sendNofitication(notiSendData)
