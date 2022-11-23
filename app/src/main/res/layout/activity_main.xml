@@ -93,7 +93,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="6dp"
-                    android:background="@drawable/bg_corner_16">
+                    android:background="@drawable/bg_corner_18">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
@@ -104,7 +104,7 @@
             android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_navi"
             >
 
             <ListView
