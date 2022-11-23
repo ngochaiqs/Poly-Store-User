@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "98083385938",
-    "project_id": "appbanhang-8987e",
-    "storage_bucket": "appbanhang-8987e.appspot.com"
+    "project_number": "169882642283",
+    "project_id": "poly-store-24adc",
+    "storage_bucket": "poly-store-24adc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:98083385938:android:28b237f4c4a2e51b84a58b",
+        "mobilesdk_app_id": "1:169882642283:android:1c6ea1c9c1e93b5e820e2e",
         "android_client_info": {
           "package_name": "com.poly_store"
         }
       },
       "oauth_client": [
         {
-          "client_id": "98083385938-d7cnp1upeqkjauuusbnacvjjepekidvr.apps.googleusercontent.com",
+          "client_id": "169882642283-u472liiul3lgb0pkue9vmrp68oeabtup.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.poly_store",
-            "certificate_hash": "131bac2fc9782c06d669a86cf0dbf2c76f89101f"
+            "certificate_hash": "9fde15c5baae84fcda9ec54beb48003b29597bbf"
           }
         },
         {
-          "client_id": "98083385938-d6qbd0lh7upc7jotnbhadcjet22pq671.apps.googleusercontent.com",
+          "client_id": "169882642283-i6m5fu44vddp1e9aaab1rc52ekchkilv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAuV-EXgPXSvHQFUXBiKFHyAom5uDJYY80"
+          "current_key": "AIzaSyBd6cbPjLmBANB5U7u8FPpZS5gjqSQPtTE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "98083385938-d6qbd0lh7upc7jotnbhadcjet22pq671.apps.googleusercontent.com",
+              "client_id": "169882642283-i6m5fu44vddp1e9aaab1rc52ekchkilv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -44,72 +44,27 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:98083385938:android:8d66ca919ad31ade84a58b",
-        "android_client_info": {
-          "package_name": "com.poly_store_online"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "98083385938-ljoglndl7c3r35vneo17hdt62731h4as.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.poly_store_online",
-            "certificate_hash": "24fbdbf880d7e3a54d71dfc7dee79aa0eb8309a4"
-          }
-        },
-        {
-          "client_id": "98083385938-d6qbd0lh7upc7jotnbhadcjet22pq671.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAuV-EXgPXSvHQFUXBiKFHyAom5uDJYY80"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "98083385938-d6qbd0lh7upc7jotnbhadcjet22pq671.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:98083385938:android:56fe1f2f4e25ddf784a58b",
+        "mobilesdk_app_id": "1:169882642283:android:3c1b0b6ce87d3494820e2e",
         "android_client_info": {
           "package_name": "com.poly_store_user"
         }
       },
       "oauth_client": [
         {
-          "client_id": "98083385938-iecv38dkdlpjnf37fsabjv0oo25m8sj1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.poly_store_user",
-            "certificate_hash": "9fde15c5baae84fcda9ec54beb48003b29597bbf"
-          }
-        },
-        {
-          "client_id": "98083385938-d6qbd0lh7upc7jotnbhadcjet22pq671.apps.googleusercontent.com",
+          "client_id": "169882642283-i6m5fu44vddp1e9aaab1rc52ekchkilv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAuV-EXgPXSvHQFUXBiKFHyAom5uDJYY80"
+          "current_key": "AIzaSyBd6cbPjLmBANB5U7u8FPpZS5gjqSQPtTE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "98083385938-d6qbd0lh7upc7jotnbhadcjet22pq671.apps.googleusercontent.com",
+              "client_id": "169882642283-i6m5fu44vddp1e9aaab1rc52ekchkilv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

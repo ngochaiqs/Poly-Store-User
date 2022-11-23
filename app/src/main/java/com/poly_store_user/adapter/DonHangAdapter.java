@@ -42,14 +42,14 @@ public class  DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.MyviewH
     @Override
     public void onBindViewHolder(@NonNull MyviewHolder holder, int position) {
         DonHang donHang = listdonhang.get(position);
-        holder.txtdonhang.setText("Đơn hàng: " + donHang.getMaDH());
+        holder.txtdonhang.setText("Mã đơn hàng: " + donHang.getMaDH());
         holder.trangthai.setText(trangThaiDon(donHang.getTrangThai()));
         holder.tvNgayDat.setText("Ngày đặt: " + donHang.getNgayTao());
-        holder.tvTenKH.setText("Tên khách hàng: " + donHang.getTenND());
+        holder.tvTenKH.setText("Tên người nhận: " + donHang.getTenND());
         holder.tvSDT.setText("SĐT: " + donHang.getSDT());
         holder.tvDiaChi.setText("Địa chỉ: " + donHang.getDiaChi());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.tvTongTien.setText("Tổng tiền: " + decimalFormat.format(Double.parseDouble(donHang.getTongTien())) + " đ");
+        holder.tvTongTien.setText("Tổng tiền thanh toán: " + decimalFormat.format(Double.parseDouble(donHang.getTongTien())) + " đ");
 
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(
@@ -80,13 +80,13 @@ public class  DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.MyviewH
                 result = "Đơn hàng đang được xử lý";
                 break;
             case 1:
-                result = "Đơn hàng đã chấp nhận";
+                result = "Đơn hàng đang được đóng gói";
                 break;
             case 2:
                 result = "Đơn hàng đã giao cho đơn vị vận chuyển";
                 break;
             case 3:
-                result = "Thành công";
+                result = "Đơn hàng giao thành công";
                 break;
             case 4:
                 result = "Đơn hàng đã hủy";
@@ -126,7 +126,7 @@ public class  DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.MyviewH
 
         @Override
         public boolean onLongClick(View view) {
-            listener.conClick(view,getAdapterPosition(),true);
+            listener.conClick(view,getAdapterPosition(),false);
             return false;
         }
     }

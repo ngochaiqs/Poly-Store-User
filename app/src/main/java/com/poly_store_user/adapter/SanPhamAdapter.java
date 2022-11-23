@@ -90,13 +90,6 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
             imgSP = itemView.findViewById(R.id.imgSanPham);
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    itemClickListener.conClick(v, getAdapterPosition(), true);
-                    return false;
-                }
-            });
         }
 
         public void setItemClickListener(ItemClickListener itemClickListener) {
@@ -110,9 +103,9 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.MyViewHo
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            contextMenu.setHeaderTitle("Chọn thao tác");
-            contextMenu.add(0, 0, getAdapterPosition(), "Xóa");
-            contextMenu.add(0, 1, getAdapterPosition(), "Sửa");
+//            contextMenu.setHeaderTitle("Chọn thao tác");
+//            contextMenu.add(0, 0, getAdapterPosition(), "Xóa");
+//            contextMenu.add(0, 1, getAdapterPosition(), "Sửa");
         }
     }
 }

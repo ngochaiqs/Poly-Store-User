@@ -20,11 +20,16 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.poly_store_user.R;
+import com.poly_store_user.model.NotiSendData;
 import com.poly_store_user.retrofit.ApiBanHang;
+import com.poly_store_user.retrofit.ApiPushNofication;
 import com.poly_store_user.retrofit.RetrofitClient;
+import com.poly_store_user.retrofit.RetrofitClientNoti;
 import com.poly_store_user.utils.Utils;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -48,7 +53,6 @@ public class ThanhToanActivity extends AppCompatActivity {
         initView();
         initControl();
         countItem();
-//        pushNotiToUser();
     }
 
     private void countItem() {
@@ -70,9 +74,10 @@ public class ThanhToanActivity extends AppCompatActivity {
         });
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         tongtien = getIntent().getLongExtra("tongtien", 0);
-        txttongtien.setText(decimalFormat.format(tongtien));
+        txttongtien.setText(decimalFormat.format(tongtien) + " đ");
         edtSDTND.setText(Utils.nguoidung_current.getSDT());
         edtTenND.setText(Utils.nguoidung_current.getTenND());
+        edtdiachi.setText(Utils.nguoidung_current.getDiaChi());
 
         edtdiachi.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -158,6 +163,7 @@ public class ThanhToanActivity extends AppCompatActivity {
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(nguoiDungModel -> {
+                                guiThongBaoAdmin();
                                 Log.d("===///", "soLuong: " + totalItem);
                                 loadingDialog.dismissDialog();
                                 Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
@@ -174,39 +180,39 @@ public class ThanhToanActivity extends AppCompatActivity {
         });
     }
 
-//    private void pushNotiToUser() {
-//        //getToken
-//        compositeDisposable.add(apiBanHang.getToken(0,Utils.nguoidung_current.getMaND())
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(
-//                        nguoiDungModel -> {
-//                            if (nguoiDungModel.isSuccess()) {
-//                                for (int i = 0; i < nguoiDungModel.getResult().size(); i++) {
-//                                    Map<String, String> data = new HashMap<>();
-//                                    data.put("title", "thong bao");
-//                                    data.put("body", "Ban co don hang moi");
-//                                    NotiSendData notiSendData = new NotiSendData(nguoiDungModel.getResult().get(i).getToken(), data);
-//                                    ApiPushNofication apiPushNofication = RetrofitClientNoti.getInstance().create(ApiPushNofication.class);
-//                                    compositeDisposable.add(apiPushNofication.sendNofitication(notiSendData)
-//                                            .subscribeOn(Schedulers.io())
-//                                            .observeOn(AndroidSchedulers.mainThread())
-//                                            .subscribe(
-//                                                    notiResponse -> {
-//                                                    },
-//                                                    throwable -> {
-//                                                        Log.d("Logg", throwable.getMessage());
-//                                                    }
-//                                            ));
-//                                }
-//                            }
-//
-//                        },
-//                        throwable -> {
-//                            Log.d("loggg", throwable.getMessage());
-//                        }
-//                ));
-//    }
+    private void guiThongBaoAdmin() {
+        //getToken
+        compositeDisposable.add(apiBanHang.getToken(1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        nguoiDungModel -> {
+                            if (nguoiDungModel.isSuccess()) {
+                                for (int i = 0; i < nguoiDungModel.getResult().size(); i++) {
+                                    Map<String, String> data = new HashMap<>();
+                                    data.put("title", "Thông báo");
+                                    data.put("body", "Nhận được đơn hàng mới!");
+                                    NotiSendData notiSendData = new NotiSendData(nguoiDungModel.getResult().get(i).getToken(), data);
+                                    ApiPushNofication apiPushNofication = RetrofitClientNoti.getInstance().create(ApiPushNofication.class);
+                                    compositeDisposable.add(apiPushNofication.sendNofitication(notiSendData)
+                                            .subscribeOn(Schedulers.io())
+                                            .observeOn(AndroidSchedulers.mainThread())
+                                            .subscribe(
+                                                    notiResponse -> {
+                                                    },
+                                                    throwable -> {
+                                                        Log.d("Logg", throwable.getMessage());
+                                                    }
+                                            ));
+                                }
+                            }
+
+                        },
+                        throwable -> {
+                            Log.d("loggg", throwable.getMessage());
+                        }
+                ));
+    }
 
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
