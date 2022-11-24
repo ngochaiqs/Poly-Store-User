@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     SanPhamAdapter sanPhamAdapter;
     NotificationBadge badge;
     FrameLayout frameLayout;
-    ImageView imgsearch, imageMess;
+    ImageView imgsearch, imageMess, imgAoThun, imgAoKhoac, imgAoSoMi, imgQuanJean;
 
 
     @Override
@@ -239,6 +239,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void AnhXa() {
+        imgAoKhoac = findViewById(R.id.imgAoKhoac);
+        imgAoSoMi = findViewById(R.id.imgAoSoMi);
+        imgAoThun = findViewById(R.id.imgAoThun);
+        imgQuanJean = findViewById(R.id.imgQuanJean);
         imageMess = findViewById(R.id.image_mess);
         imgsearch = findViewById(R.id.imgsearch);
         toolbar = findViewById(R.id.toolbarMain);
@@ -286,6 +290,38 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
                 startActivity(intent);
+            }
+        });
+        imgAoKhoac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent aoKhoac = new Intent(MainActivity.this, AoKhoacActivity.class);
+                aoKhoac.putExtra("maLoai",1);
+                startActivity(aoKhoac);
+            }
+        });
+        imgAoSoMi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent aoSoMi = new Intent(MainActivity.this, AoSoMiActivity.class);
+                aoSoMi.putExtra("maLoai",3);
+                startActivity(aoSoMi);
+            }
+        });
+        imgAoThun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent aoThun = new Intent(MainActivity.this, AoThunActivity.class);
+                aoThun.putExtra("maLoai",2);
+                startActivity(aoThun);
+            }
+        });
+        imgQuanJean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent quanJean = new Intent(MainActivity.this, QuanJeanActivity.class);
+                quanJean.putExtra("maLoai",4);
+                startActivity(quanJean);
             }
         });
         

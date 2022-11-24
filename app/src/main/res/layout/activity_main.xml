@@ -70,7 +70,113 @@
                 android:layout_margin="@dimen/dp_6"
                 android:elevation="10dp">
             </ViewFlipper>
+            <LinearLayout
+                android:background="@drawable/edit_text_bg"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_margin="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/imgAoKhoac"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/aokhoac"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Áo Khoác"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_color_main"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="50dp"
+                    android:background="@color/text_color_main"
+                    android:layout_gravity="center"/>
+                <LinearLayout
+                    android:layout_margin="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/imgAoThun"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/aothun"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Áo Khoác"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_color_main"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="50dp"
+                    android:background="@color/text_color_main"
+                    android:layout_gravity="center"/>
+                <LinearLayout
+                    android:layout_margin="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/imgAoSoMi"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/aosomi"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Áo Sơ Mi"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_color_main"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="50dp"
+                    android:background="@color/text_color_main"
+                    android:layout_gravity="center"/>
+                <LinearLayout
+                    android:layout_margin="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/imgQuanJean"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/quanjean"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Quần Jean"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_color_main"
+                        android:textSize="16sp"/>
+                </LinearLayout>
 
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -88,6 +194,11 @@
                     android:gravity="center"
                     android:textColor="@color/text_color_main"
                     android:textSize="22sp" />
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:background="@color/text_color_main"
+                    android:layout_gravity="center"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerviewMain"
                     android:layout_width="match_parent"

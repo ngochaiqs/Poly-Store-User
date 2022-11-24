@@ -7,10 +7,9 @@
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:layout_marginLeft="12dp"
-    android:background="#BDB3B3"
     android:elevation="8dp">
     <FrameLayout
-        android:background="#2DBDB3B3"
+        android:background="#fff3e6"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
