@@ -180,7 +180,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         });
     }
 
-    private void guiThongBaoAdmin() {
+    public void guiThongBaoAdmin() {
         //getToken
         compositeDisposable.add(apiBanHang.getToken(1)
                 .subscribeOn(Schedulers.io())

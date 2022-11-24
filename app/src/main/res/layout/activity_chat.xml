@@ -17,56 +17,68 @@
         android:layout_height="?attr/actionBarSize">
     </androidx.appcompat.widget.Toolbar>
     <LinearLayout
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleview_chat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:padding="5dp"
+
             app:layout_constraintBottom_toTopOf="@+id/line1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             tools:layout_editor_absoluteX="9dp" />
-        <LinearLayout
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:weightSum="10"
-            android:id="@+id/line1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/edtinputtex"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="8"
-                android:background="@drawable/back_inputtex"
-                android:hint="Nội dung chat"
-                android:gravity="center"
-                android:layout_marginLeft="30dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imagechat"
-                android:src="@drawable/ibg_bug_ic_send"
-                android:layout_width="0dp"
-                android:layout_gravity="center"
-                android:layout_weight="2"
-                android:layout_height="35dp"
-                app:tint="@color/colortext" />
-        </LinearLayout>
     </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:weightSum="10"
+        android:id="@+id/line1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imageAdd"
+            android:src="@drawable/ic_baseline_add_24"
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            app:tint="@color/colortext" />
 
+        <EditText
+            android:id="@+id/edtinputtex"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:background="@drawable/back_inputtex"
+            android:hint="Nội dung chat"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imagechat"
+            android:src="@drawable/ibg_bug_ic_send"
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            app:tint="@color/colortext" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

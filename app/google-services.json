@@ -14,14 +14,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "98083385938-d7cnp1upeqkjauuusbnacvjjepekidvr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.poly_store",
-            "certificate_hash": "131bac2fc9782c06d669a86cf0dbf2c76f89101f"
-          }
-        },
-        {
           "client_id": "98083385938-d6qbd0lh7upc7jotnbhadcjet22pq671.apps.googleusercontent.com",
           "client_type": 3
         }

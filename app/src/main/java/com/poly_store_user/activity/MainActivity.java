@@ -35,13 +35,18 @@ import com.poly_store_user.adapter.LoaiSPAdapter;
 import com.poly_store_user.adapter.SanPhamAdapter;
 import com.poly_store_user.model.LoaiSP;
 import com.poly_store_user.model.NguoiDung;
+import com.poly_store_user.model.NotiSendData;
 import com.poly_store_user.model.SanPham;
 import com.poly_store_user.retrofit.ApiBanHang;
+import com.poly_store_user.retrofit.ApiPushNofication;
 import com.poly_store_user.retrofit.RetrofitClient;
+import com.poly_store_user.retrofit.RetrofitClientNoti;
 import com.poly_store_user.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             Utils.nguoidung_current = nguoiDung;
 
         }
+       // getTokenChat();
         getToken();
         AnhXa();
         ActionViewFlipper();
@@ -120,16 +126,21 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-//        compositeDisposable.add(apiBanHang.gettoken(1).subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(
-//                        nguoiDungModel -> {
-//                            if (nguoiDungModel.isSuccess()){
-//                                Utils.ID_RECEIVED = String.valueOf(nguoiDungModel.getResult().get(0).getMaND()) ;
-//                            }
-//                        }, throwable -> {}
-//                ));
     }
+    private void getTokenChat() {
+        //getToken
+        compositeDisposable.add(apiBanHang.getToken(1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        nguoiDungModel -> {
+                            if (nguoiDungModel.isSuccess()){
+                                Utils.ID_RECEIVED = String.valueOf(nguoiDungModel.getResult().get(0).getMaND()) ;
+                            }
+                        }, throwable -> {}
+                ));
+    }
+
 
 
     private void getClickMenu() {
