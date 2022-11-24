@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,6 +39,7 @@ public class ChatActivity extends AppCompatActivity {
     List<ChatMessage> list;
     int iduser;
     String iduser_str;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +50,28 @@ public class ChatActivity extends AppCompatActivity {
 
         initView();
         initControl();
-//      insertUser();
+        insertUser();
         listenMess();
+        ActionBar();
     }
 
-//    private void insertUser() {
-//        HashMap<String, Object> user = new HashMap<>();
-//        user.put("id", Utils.nguoidung_current.getMaND());
-//        user.put("username", Utils.nguoidung_current.getTenND());
-//        db.collection("users").document(String.valueOf(Utils.nguoidung_current.getMaND())).set(user);
-//    }
+    private void ActionBar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+        private void insertUser() {
+        HashMap<String, Object> user = new HashMap<>();
+        user.put("id", Utils.nguoidung_current.getMaND());
+        user.put("username", Utils.nguoidung_current.getTenND());
+        db.collection("users").document(String.valueOf(Utils.nguoidung_current.getMaND())).set(user);
+    }
     public void hideKeyboard(View view) {
     InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
     inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -147,5 +161,6 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         adapter = new ChatAdapter(getApplicationContext(), list, String.valueOf(Utils.nguoidung_current.getMaND()));
         recyclerView.setAdapter(adapter);
+        toolbar = findViewById(R.id.toolbarChat);
     }
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
     tools:context=".activity.GioHangActivity">
 
     <TextView
@@ -23,7 +24,7 @@
         android:id="@+id/toobar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/toolbar_color"
+        android:background="@drawable/bg_toolbar"
         app:title="Giỏ Hàng"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="5dp" >

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
     tools:context=".activity.ChiTietActivity">
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center"
         app:title="Chi Tiết Sản Phẩm"
-        android:background="@color/toolbar_color"
+        android:background="@drawable/bg_toolbar"
         >
         <FrameLayout
             android:id="@+id/framegiohang"

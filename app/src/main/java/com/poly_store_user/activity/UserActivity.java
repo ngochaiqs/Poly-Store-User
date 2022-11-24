@@ -46,7 +46,7 @@ public class UserActivity extends AppCompatActivity {
                             List<NguoiDung> nguoidunglist = new ArrayList<>();
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()){
                                 NguoiDung nguoiDung = new NguoiDung();
-                                nguoiDung.setMaND(documentSnapshot.getLong("Ma").intValue());
+                                nguoiDung.setMaND(documentSnapshot.getLong("id").intValue());
                                 nguoiDung.setTenND(documentSnapshot.getString("username"));
                                 nguoidunglist.add(nguoiDung);
                             }

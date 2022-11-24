@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusableInTouchMode="true"
+    android:layout_margin="5dp"
     tools:context=".activity.DoiMatKhauActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarDoiMK"
-        android:background="@color/toolbar_color"
+        android:background="@drawable/bg_toolbar"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         app:title="Mật Khẩu"

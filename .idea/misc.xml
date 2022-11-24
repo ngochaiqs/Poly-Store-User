@@ -19,10 +19,30 @@
         <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/drawable-hdpi/bg_dia_log.xml" value="0.1" />
         <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/drawable/back_received.xml" value="0.1" />
         <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/drawable/back_send_mess.xml" value="0.1" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_ao_khoac.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_ao_so_mi.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_ao_thun.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_chat.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_chi_tiet.xml" value="0.1" />
         <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_dang_nhap.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_doi_mat_khau.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_gio_hang.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_quan_jean.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_tim_kiem.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_user.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/activity_xem_don.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/custom_dialog.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/dialog_donhang.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_aokhoac.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_aosomi.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_aothun.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_chitiet.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_donhang.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_giohang.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_loading.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_loaisp.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_quanjean.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_received.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_sanpham.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/luong/AndroidStudioProjects/Poly-Store-User/app/src/main/res/layout/item_send_mess.xml" value="0.27447916666666666" />

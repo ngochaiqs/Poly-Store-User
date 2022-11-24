@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toobar"
         app:title="Đơn Hàng"
-        android:background="@color/toolbar_color"
+        android:background="@drawable/bg_toolbar"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">

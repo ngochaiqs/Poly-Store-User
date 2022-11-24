@@ -293,7 +293,7 @@ public class DangNhapActivity extends AppCompatActivity {
                         },
                         throwable -> {
                             loadingDialog.dismissDialog();
-                            Toast.makeText(getApplicationContext(), "Sai email hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Lỗi kết nối Internet!", Toast.LENGTH_SHORT).show();
                         }
                 ));
     }

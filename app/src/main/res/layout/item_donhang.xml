@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         android:layout_margin="10dp"
@@ -9,9 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="8dp"
-        app:cardCornerRadius="4dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/bg_corner_14"
+        app:cardCornerRadius="20dp"
         >
         <LinearLayout
             android:orientation="vertical"
@@ -45,6 +44,13 @@
                     android:textColor="@color/colortext"
                     android:textSize="16sp"/>
             </LinearLayout>
+            <View
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:layout_height="1dp"
+                android:background="@color/text_color_main"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,6 +100,13 @@
                     android:textColor="@color/text_color_main"
                     android:textSize="16sp"/>
             </LinearLayout>
+            <View
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:layout_height="1dp"
+                android:background="@color/text_color_main"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:fillViewport="true"
                 android:id="@+id/recycleview_chitiet"
@@ -104,6 +117,7 @@
                 android:layout_marginRight="10dp"
                 android:padding="5dp" />
             <TextView
+                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvTongTien"
@@ -113,7 +127,15 @@
                 android:padding="5dp"
                 android:textColor="@color/colortext"
                 android:textSize="15sp"/>
+            <View
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:layout_height="1dp"
+                android:background="@color/text_color_main"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
 

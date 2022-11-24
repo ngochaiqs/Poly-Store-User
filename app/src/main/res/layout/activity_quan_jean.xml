@@ -8,7 +8,7 @@
     tools:context=".activity.QuanJeanActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarQuanJean"
-        android:background="@color/toolbar_color"
+        android:background="@drawable/bg_toolbar"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         app:title="Quần Jean"
