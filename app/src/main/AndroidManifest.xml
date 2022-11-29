@@ -39,6 +39,9 @@
             android:name=".activity.ThemNguoiDungActivity"
             android:exported="true" />
         <activity
+            android:name=".activity.LienHeActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.UserActivity"
             android:exported="true" />
         <activity
