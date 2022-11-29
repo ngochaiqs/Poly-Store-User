@@ -147,15 +147,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="7dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:drawableStart="@drawable/ic_baseline_monetization_on_30"
                 android:drawablePadding="15dp"
                 android:padding="5dp"
-                android:text="Tổng tiền: 100.000đ"
+                android:text="100.000đ"
                 android:textColor="@color/colortext"
-                android:textSize="18sp"
+                android:textSize="19sp"
                 android:textStyle="bold" />
 
             <View
