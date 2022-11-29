@@ -22,24 +22,25 @@
                 android:layout_height="wrap_content"
                 android:padding="4dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/madonhang"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:padding="5dp"
                     android:text="Đơn hàng: 123"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
                     android:textSize="16sp"
-                    android:layout_marginLeft="5dp"
-                    android:padding="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                    android:textStyle="bold" />
                 <TextView
+                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tinhtrang"
                     android:text="Đơn hàng đang được"
                     android:textStyle="bold"
-                    android:layout_marginLeft="25dp"
                     android:padding="5dp"
                     android:textColor="@color/colortext"
                     android:textSize="16sp"/>
@@ -57,7 +58,10 @@
                 android:padding="4dp"
                 android:orientation="vertical">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_person_pin_30"
+                    android:drawablePadding="15dp"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvTenKH"
                     android:text="Tên khách hàng: "
@@ -67,7 +71,10 @@
                     android:textColor="@color/text_color_main"
                     android:textSize="16sp"/>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_location_on_24"
+                    android:drawablePadding="15dp"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvDiaChi"
                     android:text="Địa chỉ: "
@@ -76,29 +83,41 @@
                     android:padding="5dp"
                     android:textColor="@color/text_color_main"
                     android:textSize="16sp"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:id="@+id/tvNgayDat"
-                    android:text="Ngày đặt:"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginLeft="5dp"
-                    android:padding="5dp"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvSDT"
-                    android:layout_marginLeft="5dp"
-                    android:text="SĐT:"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:textColor="@color/text_color_main"
-                    android:textSize="16sp"/>
+                    android:orientation="horizontal">
+                    <TextView
+                        android:drawableStart="@drawable/ic_baseline_date_range_30"
+                        android:drawablePadding="15dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:id="@+id/tvNgayDat"
+                        android:text="Ngày đặt:"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="7dp"
+                        android:padding="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvSDT"
+                        android:layout_width="135dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_baseline_phone_30"
+                        android:drawablePadding="15dp"
+                        android:padding="5dp"
+                        android:text="SĐT:"
+                        android:textColor="@color/text_color_main"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
             </LinearLayout>
             <View
                 android:layout_width="200dp"
@@ -116,17 +135,29 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:padding="5dp" />
+            <View
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:layout_height="1dp"
+                android:background="@color/text_color_main"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"/>
             <TextView
-                android:layout_marginBottom="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/tvTongTien"
-                android:text="Tổng tiền: 100.000đ"
-                android:textStyle="bold"
-                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="7dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:drawableStart="@drawable/ic_baseline_monetization_on_30"
+                android:drawablePadding="15dp"
                 android:padding="5dp"
+                android:text="Tổng tiền: 100.000đ"
                 android:textColor="@color/colortext"
-                android:textSize="15sp"/>
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <View
                 android:layout_width="200dp"
                 android:layout_gravity="center"
