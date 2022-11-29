@@ -181,26 +181,14 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(donHang);
                         break;
                     case 7:
-                        Intent quanli = new Intent(getApplicationContext(), QuanLiActivity.class);
-                        startActivity(quanli);
-                        break;
-                    case 8:
-                        Intent thongke = new Intent(getApplicationContext(), ThongKeActivity.class);
-                        startActivity(thongke);
-                        break;
-                    case 9:
-                        Intent themNguoiDung = new Intent(getApplicationContext(), ThemNguoiDungActivity.class);
-                        startActivity(themNguoiDung);
-                        break;
-                    case 10:
                         Intent chat = new Intent(getApplicationContext(), ChatActivity.class);
                         startActivity(chat);
                         break;
-                    case 11:
+                    case 8:
                         Intent doiMatKhau = new Intent(getApplicationContext(), DoiMatKhauActivity.class);
                         startActivity(doiMatKhau);
                         break;
-                    case 12:
+                    case 9:
                         // xóa key nguoidung
                         Paper.book().delete("user");
                         FirebaseAuth.getInstance().signOut();
@@ -237,9 +225,9 @@ public class MainActivity extends AppCompatActivity {
                         loaiSPModel -> {
                             if (loaiSPModel.isSuccess()){
                                 loaiSPList = loaiSPModel.getResult();
-                                loaiSPList.add(new LoaiSP("Quản lý","https://cdn-icons-png.flaticon.com/512/3429/3429694.png"));
-                                loaiSPList.add(new LoaiSP("Thống kê","https://cdn-icons-png.flaticon.com/512/2936/2936690.png"));
-                                loaiSPList.add(new LoaiSP("Thêm người dùng","https://cdn-icons-png.flaticon.com/512/4175/4175032.png"));
+                                //loaiSPList.add(new LoaiSP("Quản lý","https://cdn-icons-png.flaticon.com/512/3429/3429694.png"));
+                                //loaiSPList.add(new LoaiSP("Thống kê","https://cdn-icons-png.flaticon.com/512/2936/2936690.png"));
+                                //loaiSPList.add(new LoaiSP("Thêm người dùng","https://cdn-icons-png.flaticon.com/512/4175/4175032.png"));
                                 loaiSPList.add(new LoaiSP("Chat","https://cdn-icons-png.flaticon.com/512/589/589708.png"));
                                 loaiSPList.add(new LoaiSP("Đổi mật khẩu","https://cdn-icons-png.flaticon.com/512/3585/3585217.png"));
                                 loaiSPList.add(new LoaiSP("Đăng xuất","https://cdn-icons-png.flaticon.com/512/159/159707.png"));
