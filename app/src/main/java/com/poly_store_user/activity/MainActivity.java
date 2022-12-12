@@ -177,7 +177,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(lienHe);
                         break;
                     case 6:
-                        Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
+                       // Intent donHang = new Intent(MainActivity.this, XemDonActivity.class);
+                        Intent donHang = new Intent(MainActivity.this, DonHangActivity.class);
                         startActivity(donHang);
                         break;
                     case 7:

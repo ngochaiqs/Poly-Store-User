@@ -6,10 +6,16 @@
     <string name="title_activity_thong_ke">ThongKeActivity</string>
     <string name="tab_text_1">Sản phẩm</string>
     <string name="tab_text_2">Doanh thu</string>
+    <string name="tab_text_3">Đang xử lý</string>
+    <string name="tab_text_4">Đang đóng gói</string>
+    <string name="tab_text_5">Đang giao</string>
+    <string name="tab_text_6">Thành công</string>
+    <string name="tab_text_7">Đã huỷ</string>
 
     <string name="facebook_app_id">715695303102452</string>
     <string name="fb_login_protocol_scheme">fb715695303102452</string>
     <string name="facebook_client_token">42af738cb1115b0c2ab89313d6d2c980</string>
+    <string name="title_activity_don_hang">DonHangActivity</string>
 
 
 </resources>
