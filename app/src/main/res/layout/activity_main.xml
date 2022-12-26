@@ -49,16 +49,18 @@
                     android:layout_marginRight="15dp"
                     android:layout_width="56dp"
                     android:layout_height="?attr/actionBarSize">
+
                     <com.nex3z.notificationbadge.NotificationBadge
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
                         android:id="@+id/menu_sl"
-                        android:layout_gravity="top|right"/>
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="top|right" />
+
                     <ImageView
+                        android:layout_width="37dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:layout_width="38dp"
-                        android:layout_height="38dp"
-                        android:src="@drawable/ic_cart_24"/>
+                        android:src="@drawable/ic_cart_24" />
                 </FrameLayout>
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
@@ -133,12 +135,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
                     <ImageView
                         android:id="@+id/imgAoSoMi"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:layout_height="53dp"
                         android:layout_weight="1"
-                        android:src="@drawable/aosomi"/>
+                        android:src="@drawable/aosomi" />
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
