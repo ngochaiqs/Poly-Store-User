@@ -113,7 +113,8 @@ public interface ApiBanHang {
     @FormUrlEncoded
     Observable<NguoiDungModel> doiMatKhau(
             @Field("email") String email,
-            @Field("matKhau") String matKhau
+            @Field("matKhau") String matKhau,
+            @Field("matKhauMoi") String matKhauMoi
 
     );
 

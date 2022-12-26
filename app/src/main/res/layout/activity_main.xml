@@ -44,24 +44,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"/>
 
-                <FrameLayout
-                    android:id="@+id/framegiohang"
-                    android:layout_marginRight="15dp"
-                    android:layout_width="56dp"
-                    android:layout_height="?attr/actionBarSize">
+                    <FrameLayout
+                        android:id="@+id/framegiohang"
+                        android:layout_width="47dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="15dp">
 
-                    <com.nex3z.notificationbadge.NotificationBadge
-                        android:id="@+id/menu_sl"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="top|right" />
+                        <com.nex3z.notificationbadge.NotificationBadge
+                            android:id="@+id/menu_sl"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="top|right" />
 
-                    <ImageView
-                        android:layout_width="37dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:src="@drawable/ic_cart_24" />
-                </FrameLayout>
+                        <ImageView
+                            android:layout_width="37dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:src="@drawable/ic_cart_24" />
+                    </FrameLayout>
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
 

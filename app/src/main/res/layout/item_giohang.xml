@@ -11,7 +11,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
+        <ozaydin.serkan.com.image_zoom_view.ImageViewZoom
             android:id="@+id/item_giohang_image"
             android:scaleType="centerCrop"
             android:src="@drawable/icon_new_w128"

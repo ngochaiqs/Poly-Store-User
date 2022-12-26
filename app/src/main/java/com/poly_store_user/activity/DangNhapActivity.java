@@ -281,7 +281,7 @@ public class DangNhapActivity extends AppCompatActivity {
                                 Paper.book().write("islogin",isLogin);
                                 Utils.nguoidung_current = nguoiDungModel.getResult().get(0);
                                 loadingDialog.dismissDialog();
-                                Toast.makeText(getApplicationContext(), nguoiDungModel.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Poly Store xin chào, " +(Utils.nguoidung_current.getTenND())+ "!", Toast.LENGTH_LONG).show();
                                 //luu lai thong tin
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);

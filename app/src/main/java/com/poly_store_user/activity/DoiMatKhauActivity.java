@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -127,18 +128,23 @@ public class DoiMatKhauActivity extends AppCompatActivity {
         String str_matKhauMoi = edtMKMoi.getText().toString().trim();
         String str_reMatKhauMoi = edtReMKMoi.getText().toString().trim();
 
+
         if (TextUtils.isEmpty(str_MatKhauCu)) {
             line3DMK.setError("Vui lòng nhập mật khẩu cũ!");
         }else if(TextUtils.isEmpty(str_email)) {
             Toast.makeText(getApplicationContext(), "Chưa nhập Email!", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(str_matKhauMoi)) {
+        } else if (TextUtils.isEmpty(str_matKhauMoi) ) {
             line4DMK.setError("Vui lòng nhập mật khẩu mới!");
+        } else if (str_matKhauMoi.length() < 6) {
+            line4DMK.setError("Mật khẩu phải có ít nhất 6 ký tự!");
+        } else if (str_reMatKhauMoi.length() < 6) {
+            line5DMK.setError("Mật khẩu phải có ít nhất 6 ký tự!");
         } else if (TextUtils.isEmpty(str_reMatKhauMoi)) {
             line5DMK.setError("Vui lòng xác nhận mật khẩu mới!");
         }else{
             if (str_matKhauMoi.equals(str_reMatKhauMoi)){
 
-                postData(str_email,str_matKhauMoi);
+                postData(str_email, str_MatKhauCu, str_matKhauMoi);
             }else{
                 Toast.makeText(getApplicationContext(), "Mật khẩu mới chưa khớp!", Toast.LENGTH_SHORT).show();
                 line4DMK.setError("Mật khẩu mới chưa khớp!");
@@ -146,17 +152,21 @@ public class DoiMatKhauActivity extends AppCompatActivity {
             }
         }
     }
-    private void  postData(String str_email, String str_matKhauMoi){
+    private void  postData(String str_email, String str_MatKhauCu,String str_matKhauMoi){
         //post data
         final LoadingDialog loadingDialog = new LoadingDialog(DoiMatKhauActivity.this);
         loadingDialog.startLoadingDialog();
-        compositeDisposable.add(apiBanHang.doiMatKhau(str_email, str_matKhauMoi)
+        compositeDisposable.add(apiBanHang.doiMatKhau(str_email,str_MatKhauCu, str_matKhauMoi)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         nguoiDungModel -> {
                             if (nguoiDungModel.isSuccess()){
-                                Utils.nguoidung_current.setMatKhau(str_matKhauMoi);
+                                //Utils.nguoidung_current.setMatKhau(str_matKhauMoi);
+                                Log.d("===///", "matkhaucu: " + str_MatKhauCu);
+                                Log.d("===///", "matkhaumoi: " + str_matKhauMoi);
+                                   Log.d("===///", "matkhaumoi: " + Utils.nguoidung_current.getMatKhau());
+
                                 loadingDialog.dismissDialog();
                                 Toast.makeText(getApplicationContext(),nguoiDungModel.getMessage(),Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
