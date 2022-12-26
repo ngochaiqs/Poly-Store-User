@@ -23,7 +23,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.text.DecimalFormat;
 
 public class GioHangActivity extends AppCompatActivity {
-        TextView giohangtrong, tongtien;
+        TextView giohangtrong, tongtien, txttongtien;
         Toolbar toolbar;
         RecyclerView recyclerViewl;
         Button btnmuahang;
@@ -56,6 +56,7 @@ public class GioHangActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Utils.mangmuahang.clear();
                 finish();
             }
         });
@@ -64,18 +65,27 @@ public class GioHangActivity extends AppCompatActivity {
         recyclerViewl.setLayoutManager(layoutManager);
         if(Utils.manggiohang.size()==0){
             giohangtrong.setVisibility(View.VISIBLE);
-
+            recyclerViewl.setVisibility(View.GONE);
+            tongtien.setVisibility(View.GONE);
+            txttongtien.setVisibility(View.GONE);
         }else {
+            btnmuahang.setText("Thanh toán");
             adapter = new GioHangAdapter(getApplicationContext(),Utils.manggiohang);
             recyclerViewl.setAdapter(adapter);
         }
         btnmuahang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ThanhToanActivity.class);
-                intent.putExtra("tongtien", tongtiensp);
-                Utils.manggiohang.clear();
-                startActivity(intent);
+                if(Utils.manggiohang.size()==0){
+                    Intent intent = new Intent(GioHangActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getApplicationContext(), ThanhToanActivity.class);
+                    intent.putExtra("tongtien", tongtiensp);
+//                    Utils.manggiohang.clear();
+                    startActivity(intent);
+                }
+
             }
         });
 
@@ -84,7 +94,8 @@ public class GioHangActivity extends AppCompatActivity {
 
     private void initView(){
         giohangtrong = findViewById(R.id.txtgiohangtrong);
-        tongtien = findViewById(R.id.txttongtien);
+        tongtien = findViewById(R.id.txtgiatien);
+        txttongtien = findViewById(R.id.txttongtien);
         toolbar = findViewById(R.id.toobar);
         recyclerViewl = findViewById(R.id.recycleviewgiohang);
         btnmuahang = findViewById(R.id.btnmuahang);

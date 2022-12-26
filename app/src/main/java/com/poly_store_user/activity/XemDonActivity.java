@@ -46,9 +46,6 @@ public class XemDonActivity extends AppCompatActivity {
     ApiBanHang apiBanHang;
     RecyclerView redonhang;
     Toolbar toolbar;
-    DonHang donHang;
-    int tinhtrang;
-    AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +58,7 @@ public class XemDonActivity extends AppCompatActivity {
     }
 
     private void getOrder() {
-        compositeDisposable.add(apiBanHang.xemDonHang(Utils.nguoidung_current.getMaND())
+        compositeDisposable.add(apiBanHang.xemDonHang(Utils.nguoidung_current.getMaND(),0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -102,104 +99,4 @@ public class XemDonActivity extends AppCompatActivity {
         compositeDisposable.clear();
         super.onDestroy();
     }
-
-//    private void showCustumDialog() {
-//        LayoutInflater inflater = getLayoutInflater();
-//        View view = inflater.inflate(R.layout.dialog_donhang, null);
-//        Spinner spinner = view.findViewById(R.id.spinner_dialogdonhang);
-//        AppCompatButton btndongy = view.findViewById(R.id.dongy_dialogdonhang);
-//        List<String> list = new ArrayList<>();
-//        list.add("Đang được xử lý");
-//        list.add("Đang đóng gói");
-//        list.add("Đã giao cho đơn vị vận chuyển");
-//        list.add("Thành công");
-//        list.add("Đã hủy");
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, list);
-//        spinner.setAdapter(adapter);
-//        spinner.setSelection(donHang.getTrangThai());
-//
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                tinhtrang = i;
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
-//        btndongy.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                capNhatDonHang();
-//            }
-//        });
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setView(view);
-//        dialog = builder.create();
-//        dialog.show();
-//    }
-
-//    private void capNhatDonHang() {
-//        compositeDisposable.add(apiBanHang.updateOrder(donHang.getMaDH(), tinhtrang)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(
-//                        messageModel -> {
-//                            getOrder();
-//                            Toast.makeText(this, messageModel.getMessage(), Toast.LENGTH_SHORT).show();
-//                            dialog.dismiss();
-//                        },
-//                        throwable -> {
-//
-//                        }
-//                ));
-//    }
-
-//    private String trangThaiDon(int status){
-//        String result = "";
-//        switch (status){
-//            case 0:
-//                result = "Đơn hàng đang được xử lý";
-//                break;
-//            case 1:
-//                result = "Đơn hàng đang được đóng gói";
-//                break;
-//            case 2:
-//                result = "Đơn hàng đã giao cho đơn vị vận chuyển";
-//                break;
-//            case 3:
-//                result = "Đơn hàng đã giao thành công";
-//                break;
-//            case 4:
-//                result = "Đơn hàng đã hủy";
-//                break;
-//        }
-//
-//        return result;
-//    }
-//
-//    @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
-//    public void eventDonHang(DonHangEvent event){
-//        if (event !=null){
-//            donHang = event.getDonHang();
-//            //showCustumDialog();
-//
-//        }
-//
-//    }
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        EventBus.getDefault().register(this);
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        EventBus.getDefault().unregister(this);
-//    }
 }

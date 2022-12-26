@@ -1,6 +1,7 @@
 package com.poly_store_user.activity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
@@ -153,31 +155,54 @@ public class ThanhToanActivity extends AppCompatActivity {
                 }else if(TextUtils.isEmpty(str_sdt)) {
                     tilSDTTT.setError("Vui lòng nhập số điện thoại!");
                 } else {
-                    final LoadingDialog loadingDialog = new LoadingDialog(ThanhToanActivity.this);
-                    loadingDialog.startLoadingDialog();
-                    String str_email = Utils.nguoidung_current.getEmail();
-                    int maND = Utils.nguoidung_current.getMaND();
-
-                    Log.d("==/ Thông tin thanh toán:", new Gson().toJson(Utils.mangmuahang));
-                    compositeDisposable.add(apiBanHang.datHang(str_email, str_sdt, String.valueOf(tongtien), maND, str_ten, str_diachi, totalItem, new Gson().toJson(Utils.mangmuahang))
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(nguoiDungModel -> {
-                                guiThongBaoAdmin();
-                                Log.d("===///", "soLuong: " + totalItem);
-                                loadingDialog.dismissDialog();
-                                Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
-                                Utils.mangmuahang.clear();
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }, throwable -> {
-                                loadingDialog.dismissDialog();
-                                Toast.makeText(getApplicationContext(), "Đặt hàng thất bại!", Toast.LENGTH_SHORT).show();
-                            }));
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ThanhToanActivity.this);
+                    builder.setTitle("Chào "+ str_ten +", hãy xác nhận đặt hàng!");
+                    builder.setMessage("Số tiền cần thanh toán là: " + decimalFormat.format(tongtien) + " đ.");
+                    builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            DatHang();
+                        }
+                    });
+                    builder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    builder.show();
                 }
             }
         });
+    }
+
+    private void DatHang() {
+        String str_diachi = edtdiachi.getText().toString().trim();
+        String str_ten = edtTenND.getText().toString().trim();
+        String str_sdt = edtSDTND.getText().toString().trim();
+
+        final LoadingDialog loadingDialog = new LoadingDialog(ThanhToanActivity.this);
+        loadingDialog.startLoadingDialog();
+        String str_email = Utils.nguoidung_current.getEmail();
+        int maND = Utils.nguoidung_current.getMaND();
+
+        Log.d("==/ Thông tin thanh toán:", new Gson().toJson(Utils.mangmuahang));
+        compositeDisposable.add(apiBanHang.datHang(str_email, str_sdt, String.valueOf(tongtien), maND, str_ten, str_diachi, totalItem, new Gson().toJson(Utils.mangmuahang))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(nguoiDungModel -> {
+                    guiThongBaoAdmin();
+                    Log.d("===///", "soLuong: " + totalItem);
+                    loadingDialog.dismissDialog();
+                    Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                    Utils.mangmuahang.clear();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }, throwable -> {
+                    loadingDialog.dismissDialog();
+                    Toast.makeText(getApplicationContext(), "Đặt hàng thất bại!", Toast.LENGTH_SHORT).show();
+                }));
     }
 
     public void guiThongBaoAdmin() {
