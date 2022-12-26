@@ -64,7 +64,7 @@
             android:layout_weight="8"
             android:background="@drawable/back_inputtex"
             android:hint="Nội dung chat"
-            android:gravity="center"
+            android:padding="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:paddingTop="10dp"
