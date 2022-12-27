@@ -44,9 +44,9 @@ public class  DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.MyviewH
         DonHang donHang = listdonhang.get(position);
         holder.txtdonhang.setText("Mã đơn hàng: " + donHang.getMaDH());
         holder.trangthai.setText(trangThaiDon(donHang.getTrangThai()));
-        holder.tvNgayDat.setText( donHang.getNgayTao());
+        holder.tvNgayDat.setText(donHang.getNgayTao());
         holder.tvTenKH.setText(donHang.getTenND());
-        holder.tvSDT.setText( donHang.getSDT());
+        holder.tvSDT.setText(donHang.getSDT());
         holder.tvDiaChi.setText(donHang.getDiaChi());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.tvTongTien.setText(decimalFormat.format(Double.parseDouble(donHang.getTongTien())) + " đ");
