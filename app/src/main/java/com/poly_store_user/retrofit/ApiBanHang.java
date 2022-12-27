@@ -52,6 +52,17 @@ public interface ApiBanHang {
             @Field("diaChi") String diaChi,
             @Field("uid") String uid
     );
+    @POST("themnguoidung.php")
+    @FormUrlEncoded
+    Observable<NguoiDungModel> themNguoiDung(
+            @Field("tenND") String tenND,
+            @Field("email") String email,
+            @Field("matKhau") String matKhau,
+            @Field("SDT") String SDT,
+            @Field("diaChi") String diaChi,
+            @Field("status") int status,
+            @Field("uid") String uid
+    );
 
     @POST("dangnhap.php")
     @FormUrlEncoded

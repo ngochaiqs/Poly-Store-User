@@ -8,7 +8,10 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,17 +30,22 @@ import com.poly_store_user.retrofit.ApiBanHang;
 import com.poly_store_user.retrofit.RetrofitClient;
 import com.poly_store_user.utils.Utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class ThemNguoiDungActivity extends AppCompatActivity {
+    int vitri = 0;
     EditText emailND, matKhauND, reMatKhauND, sdtND, tenNDND, diaChiND;
     TextInputLayout tilTenTND, tilSDTTND, tilDiaChiTND, tilEmailTND, tilMatKhauTND, tilReMatKhauTND;
     Toolbar toolbar;
     AppCompatButton buttonThemND;
     ApiBanHang apiBanHang;
     FirebaseAuth firebaseAuth;
+    Spinner spnViTri;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,12 +203,14 @@ public class ThemNguoiDungActivity extends AppCompatActivity {
             tilMatKhauTND.setError("Vui lòng nhập mật khẩu!");
         } else if (TextUtils.isEmpty(str_reMatKhau)) {
             tilReMatKhauTND.setError("Vui lòng nhập lại mật khẩu!");
+        } else if (str_matKhau.length() < 6) {
+            tilMatKhauTND.setError("Mật khẩu tối thiểu 6 ký tự!");
+        } else if (str_reMatKhau.length() < 6) {
+            tilReMatKhauTND.setError("Mật khẩu tối thiểu 6 ký tự!");
         }else if(TextUtils.isEmpty(str_sdt)) {
             tilSDTTND.setError("Vui lòng nhập số điện thoại!");
         }else if(TextUtils.isEmpty(str_diaChi)) {
             tilDiaChiTND.setError("Vui lòng nhập địa chỉ!");
-
-
         }else{
             if (str_matKhau.equals(str_reMatKhau)){
                 firebaseAuth = FirebaseAuth.getInstance();
@@ -211,7 +221,7 @@ public class ThemNguoiDungActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
                                     if (user != null) {
-                                        postData(str_tenND,str_email, str_matKhau, str_sdt, str_diaChi, user.getUid());
+                                        postData(str_tenND,str_email, str_matKhau, str_sdt, str_diaChi, (vitri), user.getUid());
 
                                     }
 
@@ -229,31 +239,31 @@ public class ThemNguoiDungActivity extends AppCompatActivity {
             }
         }
     }
-    private void  postData(String str_tenND, String str_email, String str_matKhau, String str_sdt,String str_diaChi, String uid){
+    private void  postData(String str_tenND, String str_email, String str_matKhau, String str_sdt,String str_diaChi, int vitri, String uid){
         //post data
         final LoadingDialog loadingDialog = new LoadingDialog(ThemNguoiDungActivity.this);
         loadingDialog.startLoadingDialog();
-        compositeDisposable.add(apiBanHang.dangKy(str_tenND,str_email,str_matKhau,str_sdt,str_diaChi, uid)
+        compositeDisposable.add(apiBanHang.themNguoiDung(str_tenND,str_email,str_matKhau,str_sdt,str_diaChi,vitri, uid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         nguoiDungModel -> {
                             if (nguoiDungModel.isSuccess()){
-                                Utils.nguoidung_current.setEmail(str_email);
-                                Utils.nguoidung_current.setMatKhau(str_matKhau);
+//                                Utils.nguoidung_current.setEmail(str_email);
+//                                Utils.nguoidung_current.setMatKhau(str_matKhau);
                                 loadingDialog.dismissDialog();
-                                Toast.makeText(getApplicationContext(),"Thêm người dùng thành công!",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"Thêm thành công!",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
                                 finish();
                             }else{
                                 loadingDialog.dismissDialog();
-                                Toast.makeText(getApplicationContext(), "Thêm người dùng thất bại!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Thêm thất bại!", Toast.LENGTH_SHORT).show();
                             }
                         },
                         throwable -> {
                             loadingDialog.dismissDialog();
-                            Toast.makeText(getApplicationContext(), "Thêm người dùng thất bại!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Thêm thất bại!", Toast.LENGTH_SHORT).show();
                         }
                 ));
 
@@ -284,6 +294,24 @@ public class ThemNguoiDungActivity extends AppCompatActivity {
         tilReMatKhauTND = findViewById(R.id.tilReMatKhauTND);
         tilSDTTND = findViewById(R.id.tilSDTTND);
         tilDiaChiTND = findViewById(R.id.tilDiaChiTND);
+        spnViTri = findViewById(R.id.spn_vitri);
+
+        List<String> stringList = new ArrayList<>();
+        stringList.add("Người dùng");
+        stringList.add("Quản lý");
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, stringList);
+        spnViTri.setAdapter(adapter);
+        spnViTri.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                vitri = i;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override

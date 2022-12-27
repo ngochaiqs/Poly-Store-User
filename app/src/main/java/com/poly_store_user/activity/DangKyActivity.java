@@ -198,8 +198,12 @@ public class DangKyActivity extends AppCompatActivity {
             line2.setError("Địa chỉ Email không hợp lệ!");
         } else if (TextUtils.isEmpty(str_matKhau)) {
             line3.setError("Vui lòng nhập mật khẩu!");
+        } else if (str_matKhau.length() < 6) {
+            line3.setError("Mật khẩu tối thiểu 6 ký tự!");
         } else if (TextUtils.isEmpty(str_reMatKhau)) {
             line4.setError("Vui lòng nhập lại mật khẩu!");
+        } else if (str_reMatKhau.length() < 6) {
+            line4.setError("Mật khẩu tối thiểu 6 ký tự!");
         }else if(TextUtils.isEmpty(str_sdt)) {
             line5.setError("Vui lòng nhập số điện thoại!");
         }else if(TextUtils.isEmpty(str_diaChi)) {

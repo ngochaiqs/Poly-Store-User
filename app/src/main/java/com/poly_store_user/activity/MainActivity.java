@@ -23,10 +23,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.nex3z.notificationbadge.NotificationBadge;
@@ -69,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
     NotificationBadge badge;
     FrameLayout frameLayout;
     ImageView imgsearch, imageMess, imgAoThun, imgAoKhoac, imgAoSoMi, imgQuanJean;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -240,6 +241,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void AnhXa() {
+
         imgAoKhoac = findViewById(R.id.imgAoKhoac);
         imgAoSoMi = findViewById(R.id.imgAoSoMi);
         imgAoThun = findViewById(R.id.imgAoThun);

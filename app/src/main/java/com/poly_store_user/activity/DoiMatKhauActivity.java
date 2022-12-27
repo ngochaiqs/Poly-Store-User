@@ -137,10 +137,10 @@ public class DoiMatKhauActivity extends AppCompatActivity {
             line4DMK.setError("Vui lòng nhập mật khẩu mới!");
         } else if (str_matKhauMoi.length() < 6) {
             line4DMK.setError("Mật khẩu phải có ít nhất 6 ký tự!");
-        } else if (str_reMatKhauMoi.length() < 6) {
-            line5DMK.setError("Mật khẩu phải có ít nhất 6 ký tự!");
         } else if (TextUtils.isEmpty(str_reMatKhauMoi)) {
             line5DMK.setError("Vui lòng xác nhận mật khẩu mới!");
+        } else if (str_reMatKhauMoi.length() < 6) {
+            line5DMK.setError("Mật khẩu phải có ít nhất 6 ký tự!");
         }else{
             if (str_matKhauMoi.equals(str_reMatKhauMoi)){
 
@@ -163,10 +163,6 @@ public class DoiMatKhauActivity extends AppCompatActivity {
                         nguoiDungModel -> {
                             if (nguoiDungModel.isSuccess()){
                                 //Utils.nguoidung_current.setMatKhau(str_matKhauMoi);
-                                Log.d("===///", "matkhaucu: " + str_MatKhauCu);
-                                Log.d("===///", "matkhaumoi: " + str_matKhauMoi);
-                                   Log.d("===///", "matkhaumoi: " + Utils.nguoidung_current.getMatKhau());
-
                                 loadingDialog.dismissDialog();
                                 Toast.makeText(getApplicationContext(),nguoiDungModel.getMessage(),Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
