@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +23,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class FragmentDHDongGoi extends Fragment {
+    TextView tvDongGoi;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     ApiBanHang apiBanHang;
     RecyclerView redonhang;
@@ -29,7 +31,7 @@ public class FragmentDHDongGoi extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentdhdonggoi_layout, container, false);
-
+        tvDongGoi = view.findViewById(R.id.tvDongGoi);
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
         redonhang = view.findViewById(R.id.recycleview_donhangdonggoi);
         redonhang.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -43,8 +45,13 @@ public class FragmentDHDongGoi extends Fragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         donHangModel -> {
-                            DonHangAdapter adapter = new DonHangAdapter(getContext(), donHangModel.getResult());
-                            redonhang.setAdapter(adapter);
+                              if (donHangModel.isSuccess()) {
+                                tvDongGoi.setText("Có " + donHangModel.getResult().size() + " đơn hàng đang đóng gói!");
+                                DonHangAdapter adapter = new DonHangAdapter(getContext(), donHangModel.getResult());
+                                redonhang.setAdapter(adapter);
+                            } else {
+                                tvDongGoi.setText("Không có đơn hàng nào đang đóng gói!");
+                            }
                         },
                         throwable -> {
 
