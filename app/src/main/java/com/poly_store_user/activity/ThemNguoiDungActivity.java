@@ -222,10 +222,7 @@ public class ThemNguoiDungActivity extends AppCompatActivity {
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
                                     if (user != null) {
                                         postData(str_tenND,str_email, str_matKhau, str_sdt, str_diaChi, (vitri), user.getUid());
-
                                     }
-
-
                                 }else {
                                     Toast.makeText(getApplicationContext(),"Email đã tồn tại!",Toast.LENGTH_SHORT).show();
                                 }

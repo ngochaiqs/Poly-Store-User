@@ -161,7 +161,28 @@ public class ThanhToanActivity extends AppCompatActivity {
                     builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            DatHang();
+                            final LoadingDialog loadingDialog = new LoadingDialog(ThanhToanActivity.this);
+                            loadingDialog.startLoadingDialog();
+                            String str_email = Utils.nguoidung_current.getEmail();
+                            int maND = Utils.nguoidung_current.getMaND();
+
+                            Log.d("==/ Thông tin thanh toán:", new Gson().toJson(Utils.mangmuahang));
+                            compositeDisposable.add(apiBanHang.datHang(str_email, str_sdt, String.valueOf(tongtien), maND, str_ten, str_diachi, totalItem, new Gson().toJson(Utils.mangmuahang))
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(nguoiDungModel -> {
+                                        guiThongBaoAdmin();
+                                        Log.d("===///", "soLuong: " + totalItem);
+                                        loadingDialog.dismissDialog();
+                                        Toast.makeText(getApplicationContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                                        Utils.mangmuahang.clear();
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }, throwable -> {
+                                        loadingDialog.dismissDialog();
+                                        Toast.makeText(getApplicationContext(), "Đặt hàng thất bại!", Toast.LENGTH_SHORT).show();
+                                    }));
                         }
                     });
                     builder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {

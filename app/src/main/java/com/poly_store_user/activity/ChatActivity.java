@@ -25,9 +25,11 @@ import com.poly_store_user.model.NguoiDungModel;
 import com.poly_store_user.model.NotiSendData;
 import com.poly_store_user.retrofit.ApiBanHang;
 import com.poly_store_user.retrofit.ApiPushNofication;
+import com.poly_store_user.retrofit.RetrofitClient;
 import com.poly_store_user.retrofit.RetrofitClientNoti;
 import com.poly_store_user.utils.Utils;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,7 +62,6 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         iduser = getIntent().getIntExtra("id",4); // ma nguoi nhan
         iduser_str = String.valueOf(iduser);
-
         initView();
         initControl();
         insertUser();
@@ -111,7 +112,7 @@ public class ChatActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(str_mess)){
 
         }else {
-//            guiThongBaoChatAdmin();
+            guiThongBaoAdmin();
             HashMap<String, Object> message = new HashMap<>();
             message.put(Utils.SENDID, String.valueOf(Utils.nguoidung_current.getMaND()));
             message.put(Utils.RECEIVEDID, iduser_str);
@@ -158,22 +159,38 @@ public class ChatActivity extends AppCompatActivity {
             }
         }
     };
-    private void guiThongBaoChatAdmin() {
+    public void guiThongBaoAdmin() {
         //getToken
-        String toKen = "dkhkP-NbTpGLLnhwKBmiVq:APA91bGwkNofk_3KcWd8CI2WgpA4LngE2buNP-0bnPHifYcYVHJChs6ZeawHCJW4E15Vy6i2UQXEA9unHsf-TUTwr0WXZMjz1oXPK9Us2OXLWizuYoOvuTBdJKq9jT8BIRz1-4Jy8Jtz";
-        Map<String, String> data = new HashMap<>();
-        data.put("title", "Thông báo tin nhắn mới");
-        data.put("body", "Nhận được tin nhắn mới từ " + Utils.nguoidung_current.getTenND() + "! Vui lòng kiểm tra tin nhắn!");
-        NotiSendData notiSendData = new NotiSendData(toKen, data);
-        ApiPushNofication apiPushNofication = RetrofitClientNoti.getInstance().create(ApiPushNofication.class);
-        compositeDisposable.add(apiPushNofication.sendNofitication(notiSendData)
+        compositeDisposable.add(apiBanHang.getToken(1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        notiResponse -> {
+                        nguoiDungModel -> {
+                            if (nguoiDungModel.isSuccess()) {
+                                for (int i = 0; i < nguoiDungModel.getResult().size(); i++) {
+                                    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                                    Map<String, String> data = new HashMap<>();
+                                    data.put("title", "Thông báo tin nhắn mới");
+                                    data.put("body", "Nhận được tin nhắn mới từ " + Utils.nguoidung_current.getTenND() + "! Vui lòng kiểm tra tin nhắn!");
+                                    Log.d("==///", "Token Admin: " + nguoiDungModel.getResult().get(i).getToken());
+                                    NotiSendData notiSendData = new NotiSendData(nguoiDungModel.getResult().get(i).getToken(), data);
+                                    ApiPushNofication apiPushNofication = RetrofitClientNoti.getInstance().create(ApiPushNofication.class);
+                                    compositeDisposable.add(apiPushNofication.sendNofitication(notiSendData)
+                                            .subscribeOn(Schedulers.io())
+                                            .observeOn(AndroidSchedulers.mainThread())
+                                            .subscribe(
+                                                    notiResponse -> {
+                                                    },
+                                                    throwable -> {
+                                                        Log.d("Logg", throwable.getMessage());
+                                                    }
+                                            ));
+                                }
+                            }
+
                         },
                         throwable -> {
-                            Log.d("Logg", throwable.getMessage());
+                            Log.d("loggg", throwable.getMessage());
                         }
                 ));
     }
@@ -184,6 +201,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
     private void initView(){
+        apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
         list = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recycleview_chat);

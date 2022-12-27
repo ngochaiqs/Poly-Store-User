@@ -271,6 +271,7 @@ public class DangNhapActivity extends AppCompatActivity {
     private void dangNhap( String email, String matkhau) {
         final LoadingDialog loadingDialog = new LoadingDialog(DangNhapActivity.this);
         loadingDialog.startLoadingDialog();
+
         compositeDisposable.add(apiBanHang.dangNhap(email,matkhau)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
